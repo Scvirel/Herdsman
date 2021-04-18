@@ -8,8 +8,8 @@ namespace CodeBase.Infrastructure.Factories
     public class AnimalFactory : IAnimalFactory 
     {
         private readonly IAssetProvider _assetProvider;
-        private readonly IGameMediator _gameMediator;
-        public AnimalFactory(IAssetProvider assetProvider, IGameMediator gameMediator)
+        private readonly ILevelMediator _gameMediator;
+        public AnimalFactory(IAssetProvider assetProvider, ILevelMediator gameMediator)
         {
             _assetProvider = assetProvider;
             _gameMediator = gameMediator;

@@ -41,13 +41,13 @@ namespace CodeBase.Infrastructure.States
 
             _services.RegisterSingle<IRandomService>(new RandomService());
 
-            _services.RegisterSingle<IGameMediator>(new GameMediator());
+            _services.RegisterSingle<ILevelMediator>(new LevelMediator());
 
             _services.RegisterSingle<IMainHeroFactory>(new MainHeroFactory(_services.Single<IAssetProvider>()));
 
-            _services.RegisterSingle<IAnimalFactory>(new AnimalFactory(_services.Single<IAssetProvider>(),_services.Single<IGameMediator>()));
+            _services.RegisterSingle<IAnimalFactory>(new AnimalFactory(_services.Single<IAssetProvider>(),_services.Single<ILevelMediator>()));
 
-            _services.RegisterSingle<ILevelFactory>(new LevelFactory(_services.Single<IAssetProvider>(),_services.Single<IMainHeroFactory>(),_services.Single<IAnimalFactory>(),_services.Single<IGameMediator>()));
+            _services.RegisterSingle<ILevelFactory>(new LevelFactory(_services.Single<IAssetProvider>(),_services.Single<IMainHeroFactory>(),_services.Single<IAnimalFactory>(),_services.Single<ILevelMediator>()));
         }
 
         private void EnterLevelLoad()

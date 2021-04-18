@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5d2d2d5bd03867428ed793175c672ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainRect: {fileID: 231804857968249175}
   HeroSpawnPoint: {fileID: 6313481036118861830}
   YardSpawnPoint: {fileID: 6764501302309061178}
 --- !u!1 &344325208387727013

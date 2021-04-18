@@ -1,11 +1,9 @@
-﻿using System;
-
-using Assets.CodeBase.Infrastructure.Factories;
+﻿using Assets.CodeBase.Infrastructure.Factories;
 
 using CodeBase.Infrastructure.AssetsManagement;
 using CodeBase.Infrastructure.Services;
 using CodeBase.Logic;
-using CodeBase.Logic.GameComponents;
+using CodeBase.Logic.LevelComponents;
 
 using UnityEngine;
 
@@ -16,14 +14,14 @@ namespace CodeBase.Infrastructure.Factories
         private readonly IAssetProvider _assetProvider;
         private readonly IMainHeroFactory _mainHeroFactory;
         private readonly IAnimalFactory _animalFactory;
-        private readonly IGameMediator _gameMediator;
+        private readonly ILevelMediator _gameMediator;
 
         private UserUI _userUI;
         private GameField _gameField;
         private Hero _hero;
         private Yard _yard;
 
-        public LevelFactory(IAssetProvider assetProvider, IMainHeroFactory mainHeroFactory, IAnimalFactory animalFactory, IGameMediator gameMediator)
+        public LevelFactory(IAssetProvider assetProvider, IMainHeroFactory mainHeroFactory, IAnimalFactory animalFactory, ILevelMediator gameMediator)
         {
             _mainHeroFactory = mainHeroFactory;
             _animalFactory = animalFactory;
@@ -38,7 +36,7 @@ namespace CodeBase.Infrastructure.Factories
             GameObject mapObj = CreateMap();
             Map map = mapObj.GetComponent<Map>();
 
-            _gameField = CreateGameField(mapObj.transform).GetComponent<GameField>();
+            _gameField = map.GameField;
 
             _hero = CreateHero(_gameField.HeroSpawnPoint.position, mapObj.transform).GetComponent<Hero>();
 
