@@ -67,6 +67,7 @@
     <Compile Include="Assets\CodeBase\Infrastructure\AssetsManagement\AssetsPaths.cs" />
     <Compile Include="Assets\CodeBase\Infrastructure\AssetsManagement\IAssetProvider.cs" />
     <Compile Include="Assets\CodeBase\Infrastructure\Factories\AnimalFactory.cs" />
+    <Compile Include="Assets\CodeBase\Infrastructure\Factories\IAnimalFactory.cs" />
     <Compile Include="Assets\CodeBase\Infrastructure\Factories\ILevelFactory.cs" />
     <Compile Include="Assets\CodeBase\Infrastructure\Factories\IMainHeroFactory.cs" />
     <Compile Include="Assets\CodeBase\Infrastructure\Factories\LevelFactory.cs" />

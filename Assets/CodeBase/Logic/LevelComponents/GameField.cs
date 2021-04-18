@@ -6,6 +6,7 @@ namespace CodeBase.Logic.LevelComponents
     public class GameField : LevelComponent, IPointerDownHandler
     {
         public RectTransform ParentRect;
+        public RectTransform MainRect;
 
         public Transform HeroSpawnPoint;
         public Transform YardSpawnPoint;
@@ -14,7 +15,7 @@ namespace CodeBase.Logic.LevelComponents
         {
             Debug.Log("Pointer down catch");
 
-            GameMediator.ChangeHeroPosition(downEvent.position - ParentRect.anchoredPosition);
+            Mediator.ChangeHeroPosition(downEvent.position - ParentRect.sizeDelta/2);
         }
     }
 }

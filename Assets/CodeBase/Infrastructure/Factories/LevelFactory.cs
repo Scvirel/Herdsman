@@ -38,9 +38,11 @@ namespace CodeBase.Infrastructure.Factories
 
             _gameField = map.GameField;
 
+            _yard = CreateYard(_gameField.YardSpawnPoint.position, mapObj.transform).GetComponent<Yard>();
+
             _hero = CreateHero(_gameField.HeroSpawnPoint.position, mapObj.transform).GetComponent<Hero>();
 
-            _yard = CreateYard(_gameField.YardSpawnPoint.position, mapObj.transform).GetComponent<Yard>();
+            _animalFactory.StartAnimalsCreatingIn(mapObj.transform,_gameField.MainRect);
 
             map.SetRenderCamera(_hero.MainCamera);
             SubscribeMediator();

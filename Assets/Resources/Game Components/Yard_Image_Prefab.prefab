@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &850806449897328264
 RectTransform:
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.9634802, b: 0.031372547, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -87,3 +87,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e5a5d1557de37042abec9c7141d6a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainRect: {fileID: 850806449897328264}
+  Range: 193

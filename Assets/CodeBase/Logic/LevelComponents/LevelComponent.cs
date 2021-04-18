@@ -6,10 +6,10 @@ namespace CodeBase.Logic.LevelComponents
 {
     public class LevelComponent : MonoBehaviour
     {
-        private ILevelMediator _gameMediator;
-        public ILevelMediator GameMediator => _gameMediator;
+        private ILevelMediator _mediator;
+        public ILevelMediator Mediator => _mediator;
 
         public void Subscribe(ILevelMediator gameMediator) => 
-            _gameMediator = gameMediator;
+            _mediator = gameMediator;
     }
 }

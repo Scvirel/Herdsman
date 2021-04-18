@@ -13,11 +13,11 @@ namespace CodeBase.Infrastructure
         private readonly Dictionary<Type, IExitableState> states;
         private IExitableState currentState;
 
-        public GameStateMachine(SceneLoader sceneLoader, AllServices services)
+        public GameStateMachine(SceneLoader sceneLoader, AllServices services,ICoroutineRunner coroutineRunner)
         {
             states = new Dictionary<Type, IExitableState>
             {
-                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
+                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services, coroutineRunner),
                 [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, services.Single<ILevelFactory>())
             };
         }

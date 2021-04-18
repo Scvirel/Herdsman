@@ -15,11 +15,15 @@ namespace CodeBase.Infrastructure.States
         private readonly SceneLoader _sceneLoader;
         private readonly AllServices _services;
 
-        public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader, AllServices services)
+        private readonly ICoroutineRunner _coroutineRunner;
+
+        public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader, AllServices services, ICoroutineRunner coroutineRunner)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
             _services = services;
+
+            _coroutineRunner = coroutineRunner;
 
             RegisterServices();
         }
@@ -45,7 +49,7 @@ namespace CodeBase.Infrastructure.States
 
             _services.RegisterSingle<IMainHeroFactory>(new MainHeroFactory(_services.Single<IAssetProvider>()));
 
-            _services.RegisterSingle<IAnimalFactory>(new AnimalFactory(_services.Single<IAssetProvider>(),_services.Single<ILevelMediator>()));
+            _services.RegisterSingle<IAnimalFactory>(new AnimalFactory(_services.Single<IAssetProvider>(),_services.Single<ILevelMediator>(), _coroutineRunner, _services.Single<IRandomService>()));
 
             _services.RegisterSingle<ILevelFactory>(new LevelFactory(_services.Single<IAssetProvider>(),_services.Single<IMainHeroFactory>(),_services.Single<IAnimalFactory>(),_services.Single<ILevelMediator>()));
         }

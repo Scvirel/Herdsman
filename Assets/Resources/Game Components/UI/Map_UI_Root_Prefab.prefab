@@ -18,7 +18,7 @@ GameObject:
   m_TagString: UIRoot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &7327810425197788239
 RectTransform:
@@ -236,6 +236,11 @@ PrefabInstance:
       propertyPath: ParentRect
       value: 
       objectReference: {fileID: 7327810425197788239}
+    - target: {fileID: 7606919274652640444, guid: 50f5a52cbe122534d83170b5bb5ddf13,
+        type: 3}
+      propertyPath: MainRect
+      value: 
+      objectReference: {fileID: 4692643241678245185}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50f5a52cbe122534d83170b5bb5ddf13, type: 3}
 --- !u!224 &4692643241678245185 stripped
