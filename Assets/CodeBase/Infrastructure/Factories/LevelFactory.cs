@@ -15,18 +15,20 @@ namespace CodeBase.Infrastructure.Factories
         private readonly IMainHeroFactory _mainHeroFactory;
         private readonly IAnimalFactory _animalFactory;
         private readonly ILevelMediator _gameMediator;
+        private readonly ICoroutineRunner _coroutineRunner;
 
         private UserUI _userUI;
         private GameField _gameField;
         private Hero _hero;
         private Yard _yard;
 
-        public LevelFactory(IAssetProvider assetProvider, IMainHeroFactory mainHeroFactory, IAnimalFactory animalFactory, ILevelMediator gameMediator)
+        public LevelFactory(IAssetProvider assetProvider, IMainHeroFactory mainHeroFactory, IAnimalFactory animalFactory, ILevelMediator gameMediator, ICoroutineRunner coroutineRunner)
         {
             _mainHeroFactory = mainHeroFactory;
             _animalFactory = animalFactory;
             _assetProvider = assetProvider;
             _gameMediator = gameMediator;
+            _coroutineRunner = coroutineRunner;
         }
 
         public void CreateLevel()
@@ -41,10 +43,12 @@ namespace CodeBase.Infrastructure.Factories
             _yard = CreateYard(_gameField.YardSpawnPoint.position, mapObj.transform).GetComponent<Yard>();
 
             _hero = CreateHero(_gameField.HeroSpawnPoint.position, mapObj.transform).GetComponent<Hero>();
+            _hero.Construct(_coroutineRunner);
 
-            _animalFactory.StartAnimalsCreatingIn(mapObj.transform,_gameField.MainRect);
+            _animalFactory.StartAnimalsCreatingIn(mapObj.transform, _gameField.MainRect);
 
             map.SetRenderCamera(_hero.MainCamera);
+
             SubscribeMediator();
         }
 

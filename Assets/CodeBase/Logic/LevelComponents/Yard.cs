@@ -22,14 +22,21 @@ namespace CodeBase.Logic.LevelComponents
                 {
                     Animal collidedAnimal = group[i];
                     group.RemoveAt(i);
-                    collidedAnimal.MainRect.parent = MainRect;
-                    _animals.Add(collidedAnimal);
-                    Mediator.AddPoints(collidedAnimal.Points);
+
+                    AnimalToYard(collidedAnimal);
                 }
             }
         }
 
-        public bool IsCollisionWithAnimal(Vector2 position) => 
+        private void AnimalToYard(Animal animal)
+        {
+            animal.MainRect.parent = MainRect;
+            animal.SetYardState();
+
+            _animals.Add(animal);
+            Mediator.AddPoints(animal.Points);
+        }
+        private bool IsCollisionWithAnimal(Vector2 position) => 
             MainRect.anchoredPosition.x - Range <= position.x &&
             MainRect.anchoredPosition.x + Range >= position.x &&
             MainRect.anchoredPosition.y + Range >= position.y &&

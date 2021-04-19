@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 using CodeBase.Logic.LevelComponents;
 
@@ -19,22 +18,16 @@ namespace CodeBase.Infrastructure.Services
         public UserUI UserUI { set => _userUI = value; }
         public Yard Yard { set => _yard = value; }
 
-        public LevelMediator()
-        {
+        public LevelMediator() => 
             _animals = new List<Animal>();
-        }
 
         public void AddAnimal(Animal animal)
         {
             animal.Subscribe(this);
             _animals.Add(animal);
         }
-
-        public void ChangeHeroPosition(Vector2 position)
-        {
+        public void ChangeHeroPosition(Vector2 position) => 
             _hero.Move(position);
-        }
-
         public void NotifyPatrolAnimals(Vector2 position)
         {
             for (int i = 0; i < _animals.Count; i++)
@@ -42,7 +35,6 @@ namespace CodeBase.Infrastructure.Services
                 _animals[i].NotifyPatrolByHeroPosition(position);
             }
         }
-
         public void OnAnimalCatchedByHero(Animal animal)
         {
             if (_hero.HasEmptySlots())
@@ -51,15 +43,9 @@ namespace CodeBase.Infrastructure.Services
                 _hero.CatchAnimal(animal);
             }
         }
-
-        public void NotifyYard(List<Animal> group,Vector2 heroPosition)
-        {
+        public void NotifyYard(List<Animal> group, Vector2 heroPosition) => 
             _yard.CheckToPut(group, heroPosition);
-        }
-
-        public void AddPoints(int points)
-        {
+        public void AddPoints(int points) => 
             _userUI.AddScore(points);
-        }
     }
 }

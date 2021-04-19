@@ -9,8 +9,8 @@ namespace CodeBase.Infrastructure.Services
 {
     public interface ILevelMediator : IService
     {
-        Hero Hero {set; }
-        UserUI UserUI {set; }
+        Hero Hero { set; }
+        UserUI UserUI { set; }
         Yard Yard { set; }
 
         void ChangeHeroPosition(Vector2 position);
@@ -20,7 +20,7 @@ namespace CodeBase.Infrastructure.Services
         void OnAnimalCatchedByHero(Animal animal);
 
         void AddAnimal(Animal animal);
-        void NotifyYard(List<Animal> group,Vector2 heroPosition);
+        void NotifyYard(List<Animal> group, Vector2 heroPosition);
         void AddPoints(int points);
     }
 }

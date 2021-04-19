@@ -9,7 +9,7 @@ namespace CodeBase.Logic.LevelComponents
         private ILevelMediator _mediator;
         public ILevelMediator Mediator => _mediator;
 
-        public void Subscribe(ILevelMediator gameMediator) => 
+        public void Subscribe(ILevelMediator gameMediator) =>
             _mediator = gameMediator;
     }
 }

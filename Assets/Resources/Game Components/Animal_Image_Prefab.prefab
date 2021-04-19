@@ -91,6 +91,8 @@ MonoBehaviour:
   MainRect: {fileID: 7739079001021706085}
   Range: 150
   Points: 10
+  RotationRadius: 80
+  RotationSpeed: 5
 --- !u!96 &2668529071645551121
 TrailRenderer:
   serializedVersion: 2

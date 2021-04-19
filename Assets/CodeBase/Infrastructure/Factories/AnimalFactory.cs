@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 
 using CodeBase.Infrastructure.AssetsManagement;
 using CodeBase.Infrastructure.Services;
@@ -9,7 +8,7 @@ using UnityEngine;
 
 namespace CodeBase.Infrastructure.Factories
 {
-    public class AnimalFactory : IAnimalFactory 
+    public class AnimalFactory : IAnimalFactory
     {
         private readonly IAssetProvider _assetProvider;
         private readonly ILevelMediator _levelMediator;
@@ -19,9 +18,9 @@ namespace CodeBase.Infrastructure.Factories
         private Transform _animalsParent;
         private Coroutine _spawningAnimals;
 
-        private float _heightMaxValue,_heightMinValue;
+        private float _heightMaxValue, _heightMinValue;
         private float _widthMaxValue, _widthMinValue;
-        private float _timeMax = 1f, _timeMin = 10f;
+        private float _timeMax = 1f, _timeMin = 5f;
 
         public AnimalFactory(IAssetProvider assetProvider, ILevelMediator levelMediator, ICoroutineRunner coroutineRunner, IRandomService randomService)
         {
@@ -43,8 +42,7 @@ namespace CodeBase.Infrastructure.Factories
 
             _spawningAnimals = _coroutineRunner.StartCoroutine(AnimalSpawning());
         }
-
-        public void StopAnimalsCreating() => 
+        public void StopAnimalsCreating() =>
             _coroutineRunner.StopCoroutine(_spawningAnimals);
 
         private IEnumerator AnimalSpawning()
@@ -54,6 +52,7 @@ namespace CodeBase.Infrastructure.Factories
                 Animal spawnedAnimal = _assetProvider.Initialize(AssetsPaths.AnimalPath, Vector3.zero, _animalsParent).GetComponent<Animal>();
 
                 spawnedAnimal.MainRect.anchoredPosition = GeneratePosition();
+                spawnedAnimal.Construct(_randomService, _coroutineRunner);
 
                 _levelMediator.AddAnimal(spawnedAnimal);
 
@@ -69,12 +68,10 @@ namespace CodeBase.Infrastructure.Factories
 
             return generatedPosition;
         }
-
         private float GenerateWidth() =>
             _randomService.Next(_widthMinValue, _widthMaxValue);
-        private float GenerateHeight() => 
+        private float GenerateHeight() =>
             _randomService.Next(_heightMinValue, _heightMaxValue);
-
         private float GenerateTime() =>
             _randomService.Next(_timeMin, _timeMax);
     }

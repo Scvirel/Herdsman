@@ -51,7 +51,7 @@ namespace CodeBase.Infrastructure.States
 
             _services.RegisterSingle<IAnimalFactory>(new AnimalFactory(_services.Single<IAssetProvider>(),_services.Single<ILevelMediator>(), _coroutineRunner, _services.Single<IRandomService>()));
 
-            _services.RegisterSingle<ILevelFactory>(new LevelFactory(_services.Single<IAssetProvider>(),_services.Single<IMainHeroFactory>(),_services.Single<IAnimalFactory>(),_services.Single<ILevelMediator>()));
+            _services.RegisterSingle<ILevelFactory>(new LevelFactory(_services.Single<IAssetProvider>(),_services.Single<IMainHeroFactory>(),_services.Single<IAnimalFactory>(),_services.Single<ILevelMediator>(),_coroutineRunner));
         }
 
         private void EnterLevelLoad()
